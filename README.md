@@ -29,7 +29,7 @@ A API estará disponível para receber conexões em http://localhost:8000. A doc
 Lógica de Invalidação e Consistência do Cache
 Para garantir que a camada de cache não entregue dados obsoletos (stale data), foram implementados gatilhos automáticos de invalidação baseados nos verbos HTTP:
 
-Estratégia de Leitura (GET /produtos/{id}): A API tenta ler do Redis. Se houver falha, busca no MongoDB e popula o cache do Redis com um tempo de expiração (TTL) de 60 segundos.
+Estratégia de Leitura (GET /produtos/{id}): A API tenta ler do Redis. Se houver falha, busca no MongoDB e popula o cache do Redis com um tempo de expiração (TTL) de 300 segundos.
 
 Estratégia de Escrita e Mutação (POST, PUT e Vendas): Sempre que um novo produto é criado, atualizado ou uma venda é registrada, comandos explícitos de deleção (await redis_client.delete) limpam as chaves afetadas (produtos:todos, produto:{id} e ranking:mais_vendidos). Isso força a próxima requisição de leitura a buscar o dado atualizado diretamente da fonte da verdade (MongoDB).
 
