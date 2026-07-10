@@ -62,4 +62,7 @@ A tabela abaixo detalha o comportamento do tempo de resposta da API sob alta con
 
 1.  A infraestrutura utilizando o Redis conseguiu processar +730 requisições a mais dentro do mesmo intervalo de tempo, provando que operações baseadas em memória liberam as threads de execução do FastAPI  mais rápido sendo obsevado um Ganho de Vazão (Throughput)
 2. No pior cenário de concorrência (Max), as consultas diretas ao MongoDB chegaram a 180.95 ms devido ao custo de processamento de busca em ficheiros de disco. O cache do Redis estabilizou o teto de lentidão em 140.55 ms. 
+
 O que se observou que não houve um ganho tão grande entre os bancos Redis e Mongo, mas essa observação se dá devido às limitações da simulação e ao ajuste de parametros d epopulação dos bancos.
+O link para o video : https://drive.google.com/file/d/1WCZi2GlTKfNkHxJQgRGFYTU-TquTX8tB/view?usp=sharing
+
